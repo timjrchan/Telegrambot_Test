@@ -26,8 +26,7 @@ async def start_bot():
 
     # Start polling
     await app.start()
-    await app.updater.start_polling()
-    await app.updater.idle()
+    await app.run_polling()
 
 # Streamlit Interface
 st.title("Simple Telegram Bot on Streamlit")
