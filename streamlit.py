@@ -1,7 +1,7 @@
 import asyncio
 import streamlit as st
-from telegram import Update 
-from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
+from telegram import Update
+from telegram.ext import Application, MessageHandler, filters, ContextTypes
 
 # Load secrets from Streamlit's secrets management
 TOKEN = st.secrets['orgiamidino']['TOKEN']
@@ -20,6 +20,9 @@ async def start_bot():
 
     # Add handler for any text message to reply with 'YES'
     app.add_handler(MessageHandler(filters.TEXT & (~filters.COMMAND), simple_reply))
+
+    # Initialize the application
+    await app.initialize()
 
     # Start polling
     await app.start()
